@@ -10,7 +10,7 @@ word_length = random.randint(3, 10)
 # 랜덤한 알파벳으로 이루어진 랜덤한 단어 생성
 random_word = ''.join(random.choice(letters_set) for _ in range(word_length))
 
-# 정답 단어를 표시하는 함수
+# 정답 단어 표시
 def display_word(word, guessed_letters):
     display = ""
     for letter in word:
@@ -20,7 +20,7 @@ def display_word(word, guessed_letters):
             display += "_"
     return display
 
-# 행맨 게임 로직을 포함한 함수
+# 행맨 게임
 def hangman():
     word_to_guess = random_word
     guessed_letters = []
@@ -36,7 +36,7 @@ def hangman():
         print("시도한 글자:", " ".join(guessed_letters))
         print(f"남은 시도 횟수: {remaining_attempts}")
         
-        # 게임 종료 조건 확인
+        # 게임 종료 조건 
         if "_" not in display_word(word_to_guess, guessed_letters):
             print(f"축하합니다! \n✧ʚ .·:*¨༺정답은: {word_to_guess} 입니다.༻¨*:·. ɞ✧")
             break
@@ -45,7 +45,7 @@ def hangman():
             print(f"남은 목숨이 없습니다. \n✧ʚ .·:*¨༺정답은: {word_to_guess} 입니다.༻¨*:·. ɞ✧")
             break
         
-        # 사용자의 추측 입력 받기
+        # 사용자의 추측 입력
         guess = input("한 글자를 추측해보세요: ").lower()
         
         if len(guess) == 1 and guess in string.ascii_lowercase:
@@ -58,7 +58,6 @@ def hangman():
         else:
             print("올바른 영단어를 입력해주세요.")
     
-    # 게임 종료 메시지 출력
     print("게임 종료")
 
 if __name__ == "__main__":
